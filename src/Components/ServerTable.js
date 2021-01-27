@@ -1,6 +1,5 @@
-import React, {useState}  from 'react';
+import React from 'react';
 import { Popup, Table, Select } from 'semantic-ui-react';
-import {removeServer, getServers, setupServer} from '../data';
 // import _ from 'lodash';
 import moment from 'moment';
 

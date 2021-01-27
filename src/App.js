@@ -12,7 +12,7 @@ function App() {
   const initialServerList = getServers();
   const {servers, addNewServer, deleteServer, setupServer} = useServersState(initialServerList)
 
-
+  console.log(servers);
 
   return (
     <div className="App">

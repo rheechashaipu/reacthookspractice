@@ -36,7 +36,10 @@ function getServers() {
 
 function addServer(server){
     server.id = data[data.length-1].id + 1;  // Naive unique ID
-    data.push(server);
+    data = [...data, server];
+    // data.push(server);
+    //why doesn't the above update on time?
+    return data;
 }
 
 function removeServer(id){

@@ -11,7 +11,6 @@ const AddServer = (props) => {
     const onSubmit = (data) => {
         addNewServer(data)
         setOpen(false);
-        
     };
 
     return(
