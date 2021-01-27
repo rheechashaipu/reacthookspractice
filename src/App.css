@@ -22,6 +22,9 @@
   margin: 0 auto;
 }
 
+.errorMessage {
+  color: darkred;
+}
 
 .Overdue-Servers {
   width: 80px;

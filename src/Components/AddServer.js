@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import {Button, Modal, Form } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
+import _ from 'lodash';
 
 const AddServer = (props) => {
 
     const {addNewServer} = props;
     const [open, setOpen] = useState(false);
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, errors} = useForm();
 
     const onSubmit = (data) => {
         addNewServer(data)
@@ -25,11 +27,17 @@ const AddServer = (props) => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Field>
                         <label>Hostname</label>
-                        <input name="hostname" ref={register} />
+                        <input name="hostname" ref={register({ 
+                            required: "⚠ This is required."})}/>
+                        <ErrorMessage errors={errors} name="hostname" as="p" className={'errorMessage'} />
                     </Form.Field>
                     <Form.Field>
                         <label>IP</label>
-                        <input name="ip" ref={register} />
+                        <input name="ip" ref={register({
+                            required: "Please enter a valid ip address.",
+                            pattern: /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
+                        })} />
+                        <ErrorMessage errors={errors} name="ip" as="p" className={'errorMessage'} />
                     </Form.Field>
                     <Form.Field>
                         <label>Deadline</label>
