@@ -29,31 +29,33 @@ const AddServer = (props) => {
                     <Form.Field>
                         <label>Hostname</label>
                         <input name="hostname" ref={register({ 
-                            required: "⚠ This is required."})}/>
-                        <ErrorMessage errors={errors} name="hostname" as="p" className={'errorMessage'} />
+                            required: true})}/>
+                        {errors.hostname && <p className={'errorMessage'}>⚠ This is required.</p>}
                     </Form.Field>
                     <Form.Field>
                         <label>IP</label>
                         <input name="ip" ref={register({
-                            required: "Please enter a valid ip address.",
-                            pattern: /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
+                            required: true,
+                            pattern: /^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$/
                         })} />
-                        <ErrorMessage errors={errors} name="ip" as="p" className={'errorMessage'} />
+                        {errors.ip && <p className={'errorMessage'}>⚠ Please enter a valid ipv4 address.</p>}
                     </Form.Field>
                     <Form.Field>
                         <label>Deadline</label>
-                        <input name="deadline" ref={register({
-                            required: "Please enter a valid date in MM/DD/YYYY format.",
+                        <input name="deadline" 
+                        placeholder={"Please enter a valid date in MM/DD/YYYY format"} 
+                        ref={register({
                             validate: value => moment(value, 'MM/DD/YYYY', true).isValid()
                         })} />
-                        <ErrorMessage errors={errors} name="deadline" as="p" className={'errorMessage'} />
+                        {errors.deadline && <p className={'errorMessage'} >⚠ Please enter a valid date in MM/DD/YYYY format.</p>}
                     </Form.Field>
                     <Form.Field>
                         <label>Description</label>
                         <input name="description" ref={register({
-                            required: "⚠ This is required."
+                            required: true
                         })} />
-                        <ErrorMessage errors={errors} name="description" as="p" className={'errorMessage'} />
+                        {errors.description && <p className={'errorMessage'}>⚠ This is required.</p>}
+
                     </Form.Field>
                     <Form.Field>
                         <Button type='submit'>Add Server</Button>
