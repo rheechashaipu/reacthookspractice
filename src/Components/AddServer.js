@@ -3,6 +3,7 @@ import {Button, Modal, Form } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import _ from 'lodash';
+import moment from 'moment';
 
 const AddServer = (props) => {
 
@@ -41,11 +42,18 @@ const AddServer = (props) => {
                     </Form.Field>
                     <Form.Field>
                         <label>Deadline</label>
-                        <input name="deadline" ref={register} />
+                        <input name="deadline" ref={register({
+                            required: "Please enter a valid date in MM/DD/YYYY format.",
+                            validate: value => moment(value, 'MM/DD/YYYY', true).isValid()
+                        })} />
+                        <ErrorMessage errors={errors} name="deadline" as="p" className={'errorMessage'} />
                     </Form.Field>
                     <Form.Field>
                         <label>Description</label>
-                        <input name="description" ref={register} />
+                        <input name="description" ref={register({
+                            required: "⚠ This is required."
+                        })} />
+                        <ErrorMessage errors={errors} name="description" as="p" className={'errorMessage'} />
                     </Form.Field>
                     <Form.Field>
                         <Button type='submit'>Add Server</Button>
