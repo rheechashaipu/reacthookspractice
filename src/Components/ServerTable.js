@@ -30,7 +30,7 @@ const ServerTable = (props) => {
     }
    
     return(
-        <div className="Server-Table">
+        <div>
             <h1>Server Tracker</h1>
             <Table celled>
                 <Table.Header>
@@ -46,7 +46,7 @@ const ServerTable = (props) => {
                             <Table.Cell>{server.ip}</Table.Cell>
                             <Table.Cell>{moment(server.deadline).format('l')}</Table.Cell>
                             <Table.Cell>{server.setup ? "Completed" : "Pending"}</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell collapsing>
                                 <Select servers={servers} id={server.id} onChange={handleActionSelect} placeholder='Select action' options={actionOptions}/>
                             </Table.Cell>
                         </Table.Row>)
