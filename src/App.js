@@ -1,4 +1,5 @@
 import './App.css';
+import {Grid} from 'semantic-ui-react';
 import ServerTable from './Components/ServerTable.js';
 import OverDue from './Components/OverDue.js';
 import AddServer from './Components/AddServer.js'
@@ -14,9 +15,19 @@ function App() {
 
   return (
     <div className="App">
-      <AddServer  addNewServer={addNewServer} />
-      <ServerTable servers={servers} deleteServer={deleteServer} setupServer={setupServer} />
-      <OverDue servers={servers} />
+      <Grid>
+        <Grid.Column width={12}>
+          <AddServer  addNewServer={addNewServer} className={'Add-Server'} />
+          <ServerTable servers={servers} deleteServer={deleteServer} setupServer={setupServer} />
+
+        </Grid.Column>
+        <Grid.Column width={4}>
+        <OverDue servers={servers} />
+        </Grid.Column>
+      </Grid>
+      {/* <AddServer  addNewServer={addNewServer} />
+      <ServerTable servers={servers} deleteServer={deleteServer} setupServer={setupServer} /> */}
+      {/* <OverDue servers={servers} /> */}
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Modal, Form } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
 import _ from 'lodash';
 import moment from 'moment';
 
@@ -28,13 +27,13 @@ const AddServer = (props) => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Field>
                         <label>Hostname</label>
-                        <input name="hostname" ref={register({ 
+                        <input name="hostname" placeholder="Please enter a hostname." ref={register({ 
                             required: true})}/>
                         {errors.hostname && <p className={'errorMessage'}>⚠ This is required.</p>}
                     </Form.Field>
                     <Form.Field>
                         <label>IP</label>
-                        <input name="ip" ref={register({
+                        <input name="ip" placeholder="Please enter a valid ipv4 address." ref={register({
                             required: true,
                             pattern: /^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$/
                         })} />
@@ -51,14 +50,14 @@ const AddServer = (props) => {
                     </Form.Field>
                     <Form.Field>
                         <label>Description</label>
-                        <input name="description" ref={register({
+                        <input name="description" placeholder="Please enter a description." ref={register({
                             required: true
                         })} />
                         {errors.description && <p className={'errorMessage'}>⚠ This is required.</p>}
 
                     </Form.Field>
                     <Form.Field>
-                        <Button type='submit'>Add Server</Button>
+                        <Button type='submit' className='Add-Server' >Add Server</Button>
                     </Form.Field>
 
                 </Form>
