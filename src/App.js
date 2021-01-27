@@ -2,24 +2,23 @@ import './App.css';
 import ServerTable from './Components/ServerTable.js';
 import OverDue from './Components/OverDue.js';
 import AddServer from './Components/AddServer.js'
-import {useState} from 'react';
+import useServersState from './useServersState.js'
 import {getServers} from './data';
 
 
 function App() {
 
-  const [serverData, set_ServerData] = useState(getServers())
 
-  const updateData = (data) => {
-    set_ServerData(data)
-    // console.log(serverData)
-  }
+  const initialServerList = getServers();
+  const {servers, addNewServer, deleteServer, setupServer} = useServersState(initialServerList)
+
+
 
   return (
     <div className="App">
-      <AddServer  updateData={updateData} />
-      <ServerTable servers={serverData} updateData={updateData} />
-      <OverDue servers={serverData} />
+      <AddServer  addNewServer={addNewServer} />
+      <ServerTable servers={servers} deleteServer={deleteServer} setupServer={setupServer} />
+      <OverDue servers={servers} />
     </div>
   );
 }

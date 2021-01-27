@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import { Popup, Table, Select } from 'semantic-ui-react';
-import {removeServer, getServers} from '../data';
-import _ from 'lodash';
+import {removeServer, getServers, setupServer} from '../data';
+// import _ from 'lodash';
 import moment from 'moment';
-
 
 const ServerTable = (props) => {
 
-    const {servers, updateData} = props; 
-    const tableheaders = ["Hostname", "IP", "Deadline", "Status"]
+    const {servers, deleteServer, setupServer} = props; 
+
+    const tableheaders = ["Hostname", "IP", "Deadline", "Status"];
     const actionOptions = [
         {
             key: 1,
@@ -24,12 +24,9 @@ const ServerTable = (props) => {
 
     const handleActionSelect = (e, data) => {
         if (data.value === 'Remove'){
-            removeServer(data.id);
-            updateData(getServers());
+            deleteServer(data.id);
         } else if (data.value === 'Complete') {
-            const new_server_data = [...servers]
-            _.find(new_server_data, {'id': data.id}).setup=true
-            updateData(new_server_data)
+            setupServer(data.id)
         }
     }
    

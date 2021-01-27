@@ -1,19 +1,17 @@
 import React, {useState} from 'react'
 import {Button, Modal, Form } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
-import {addServer, getServers} from '../data';
-
 
 const AddServer = (props) => {
 
-    const {updateData} = props;
+    const {addNewServer} = props;
     const [open, setOpen] = useState(false);
     const {register, handleSubmit} = useForm();
 
     const onSubmit = (data) => {
-        addServer(data)
-        updateData(getServers())
+        addNewServer(data)
         setOpen(false);
+        
     };
 
     return(

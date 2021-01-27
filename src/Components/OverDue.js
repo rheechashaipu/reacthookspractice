@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {List, Header} from 'semantic-ui-react'
 import moment from 'moment'
 
 const OverDue = (props) => {
     
-    const { servers } = props;
-    const overdueServers = servers.filter(server => moment().diff(moment(server.deadline).format('l'), 'days') > 0)
+    const overdueServers = props.servers.filter(server => moment().diff(moment(server.deadline).format('l'), 'days') > 0)
 
     return(
         <div className="Overdue-Servers">

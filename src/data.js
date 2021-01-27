@@ -41,14 +41,17 @@ function addServer(server){
 
 function removeServer(id){
     data = data.filter( s => s.id !== id);
+    return data;
 }
 
 function setupServer(id){
     data.filter(s => s.id === id)[0].setup = true;
+    return data;
 }
 
 export {
     getServers,
     removeServer,
-    addServer
+    addServer,
+    setupServer
 }
