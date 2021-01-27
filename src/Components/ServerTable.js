@@ -1,6 +1,6 @@
 import React from 'react';
 import { Popup, Table, Select } from 'semantic-ui-react';
-// import _ from 'lodash';
+import _ from 'lodash';
 import moment from 'moment';
 
 const ServerTable = (props) => {
@@ -32,7 +32,7 @@ const ServerTable = (props) => {
     return(
         <div>
             <h1>Server Tracker</h1>
-            <Table celled>
+            {!_.isEmpty(servers) ? <Table celled>
                 <Table.Header>
                     <Table.Row>
                         {tableheaders.map((text, index) => <Table.HeaderCell key={index}>{text}</Table.HeaderCell>)}
@@ -53,7 +53,7 @@ const ServerTable = (props) => {
                         )
                     }
                 </Table.Body>
-            </Table>
+            </Table> : <p>No servers available to view.</p>}
         </div>);
 }
 

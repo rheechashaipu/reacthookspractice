@@ -36,6 +36,7 @@ function getServers() {
 
 function addServer(server){
     server.id = data[data.length-1].id + 1;  // Naive unique ID
+    server.setup = false;
     data = [...data, server];
     return data;
 }
