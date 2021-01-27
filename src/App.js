@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import ServerTable from './Components/ServerTable.js';
+import OverDue from './Components/OverDue.js';
+import AddServer from './Components/AddServer.js'
+import {useState} from 'react';
+import {getServers} from './data';
+
 
 function App() {
+
+  const [serverData, set_ServerData] = useState(getServers())
+
+  const updateData = (data) => {
+    set_ServerData(data)
+    // console.log(serverData)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddServer  updateData={updateData} />
+      <ServerTable servers={serverData} updateData={updateData} />
+      <OverDue servers={serverData} />
     </div>
   );
 }
