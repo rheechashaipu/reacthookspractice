@@ -28,8 +28,8 @@ const AddServer = (props) => {
                     <Form.Field>
                         <label>Hostname</label>
                         <input name="hostname" placeholder="Please enter a hostname." ref={register({ 
-                            required: true})}/>
-                        {errors.hostname && <p className={'errorMessage'}>⚠ This is required.</p>}
+                            required: true, maxLength: 280 })}/>
+                        {errors.hostname && <p className={'errorMessage'}>⚠ Enter a hostname, max 280 characters.</p>}
                     </Form.Field>
                     <Form.Field>
                         <label>IP</label>
@@ -51,9 +51,9 @@ const AddServer = (props) => {
                     <Form.Field>
                         <label>Description</label>
                         <input name="description" placeholder="Please enter a description." ref={register({
-                            required: true
+                            required: true, maxLength: 280 
                         })} />
-                        {errors.description && <p className={'errorMessage'}>⚠ This is required.</p>}
+                        {errors.description && <p className={'errorMessage'}>⚠ Enter a description, max 280 characters.</p>}
 
                     </Form.Field>
                     <Form.Field>
