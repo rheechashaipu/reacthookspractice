@@ -1,3 +1,6 @@
+## to just see the assignment:
+https://rheechashaipu.github.io/reacthookspractice/
+
 ## To run locally:
 
 1. open directory, run the following: git clone https://github.com/rheechashaipu/reacthookspractice.git
